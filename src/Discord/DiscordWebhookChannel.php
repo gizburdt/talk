@@ -6,7 +6,7 @@ use Illuminate\Http\Client\RequestException;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
 
-class DiscordChannel
+class DiscordWebhookChannel
 {
     /**
      * @throws RequestException

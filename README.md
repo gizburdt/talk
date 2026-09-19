@@ -19,16 +19,16 @@ composer require gizburdt/talk
 
 ### Discord
 
-Create a webhook in your Discord channel settings. Return `DiscordChannel::class` from `via()` and add a `toDiscord()` method to your notification:
+Create a webhook in your Discord channel settings. Return `DiscordWebhookChannel::class` from `via()` and add a `toDiscord()` method to your notification:
 
 ``` php
-use Gizburdt\Talk\Discord\DiscordChannel;
 use Gizburdt\Talk\Discord\DiscordEmbed;
 use Gizburdt\Talk\Discord\DiscordMessage;
+use Gizburdt\Talk\Discord\DiscordWebhookChannel;
 
 public function via(object $notifiable): array
 {
-    return [DiscordChannel::class];
+    return [DiscordWebhookChannel::class];
 }
 
 public function toDiscord(object $notifiable): DiscordMessage

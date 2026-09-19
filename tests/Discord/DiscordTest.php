@@ -1,8 +1,8 @@
 <?php
 
-use Gizburdt\Talk\Discord\DiscordChannel;
 use Gizburdt\Talk\Discord\DiscordEmbed;
 use Gizburdt\Talk\Discord\DiscordMessage;
+use Gizburdt\Talk\Discord\DiscordWebhookChannel;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Notifications\Notification;
@@ -13,7 +13,7 @@ class TestNotification extends Notification
 {
     public function via(mixed $notifiable): array
     {
-        return [DiscordChannel::class];
+        return [DiscordWebhookChannel::class];
     }
 
     public function toDiscord(mixed $notifiable): DiscordMessage
