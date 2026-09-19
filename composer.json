@@ -45,12 +45,5 @@
             "pestphp/pest-plugin": true
         },
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Gizburdt\\Talk\\TalkServiceProvider"
-            ]
-        }
     }
 }

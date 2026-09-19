@@ -53,7 +53,7 @@ class DiscordMessage implements Arrayable
     public function embed(DiscordEmbed|callable $embed): static
     {
         if (is_callable($embed)) {
-            $embed = $embed(DiscordEmbed::make());
+            $embed = tap(DiscordEmbed::make(), $embed);
         }
 
         $this->embeds[] = $embed;

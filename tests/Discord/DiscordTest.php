@@ -1,5 +1,6 @@
 <?php
 
+use Gizburdt\Talk\Discord\DiscordChannel;
 use Gizburdt\Talk\Discord\DiscordEmbed;
 use Gizburdt\Talk\Discord\DiscordMessage;
 use Illuminate\Http\Client\Request;
@@ -12,7 +13,7 @@ class TestNotification extends Notification
 {
     public function via(mixed $notifiable): array
     {
-        return ['discord'];
+        return [DiscordChannel::class];
     }
 
     public function toDiscord(mixed $notifiable): DiscordMessage
@@ -34,6 +35,16 @@ it('builds a message', function () {
         'avatar_url' => 'https://example.com/a.png',
         'tts' => true,
         'embeds' => [['title' => 'Title', 'color' => 16711680]],
+    ]);
+});
+
+it('keeps the embed when the callback returns nothing', function () {
+    $message = DiscordMessage::make()->embed(function (DiscordEmbed $embed) {
+        $embed->title('Title');
+    });
+
+    expect($message->toArray())->toBe([
+        'embeds' => [['title' => 'Title']],
     ]);
 });
 
